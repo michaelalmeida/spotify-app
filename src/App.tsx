@@ -1,0 +1,48 @@
+import React from "react";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import { useSelector } from "react-redux";
+import { SpotifyInitialState } from "./store/spotifyReducer";
+
+import GlobalStyles from "./components/style/globalStyle";
+import { Container } from "./components/style/container/Container";
+
+import Header from "./components/Header/Header";
+import Login from "./components/Login/Login";
+import HomePage from "./components/HomePage/HomePage";
+
+const App: React.FC = () => {
+  interface StateProps {
+    userToken: string;
+  }
+
+  const { userToken } = useSelector<SpotifyInitialState, StateProps>(
+    (state: SpotifyInitialState) => {
+      return {
+        userToken: state.userToken,
+      };
+    }
+  );
+
+  return (
+    <Container>
+      <GlobalStyles />
+      <Header isAuth={!!userToken} />
+      <Router>
+        <Switch>
+          <Route exact path="/login/" component={Login} />
+          <Route exact path="/">
+            {userToken ? <HomePage /> : <Redirect to="/login/" />}
+          </Route>
+        </Switch>
+      </Router>
+    </Container>
+  );
+};
+
+export default App;
