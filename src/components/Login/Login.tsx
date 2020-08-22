@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import { authEndpoint, clientId, redirectUri } from "../../utils/config";
-import hash from "../../utils/getHash";
+import getHash from "../../utils/getHash";
 
 import { SpotifyInitialState } from "../../store/spotifyReducer";
 import { authUser } from "../../store/actions";
@@ -28,7 +28,7 @@ const Login: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(authUser(hash));
+    dispatch(authUser(getHash()));
   }, [userToken, dispatch]);
 
   return (

@@ -7,7 +7,6 @@ import {
   Redirect,
 } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { SpotifyInitialState } from "./store/spotifyReducer";
 
 import GlobalStyles from "./components/style/globalStyle";
 import { Container } from "./components/style/container/Container";
@@ -16,17 +15,15 @@ import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
 import HomePage from "./components/HomePage/HomePage";
 
-const App: React.FC = () => {
-  interface StateProps {
+interface SpotifyReducer {
+  spotify: {
     userToken: string;
-  }
+  };
+}
 
-  const { userToken } = useSelector<SpotifyInitialState, StateProps>(
-    (state: SpotifyInitialState) => {
-      return {
-        userToken: state.userToken,
-      };
-    }
+const App: React.FC = () => {
+  const userToken = useSelector<SpotifyReducer, string>(
+    (state: SpotifyReducer) => state.spotify.userToken
   );
 
   return (

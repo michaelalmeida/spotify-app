@@ -3,11 +3,10 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import thunk from "redux-thunk";
 
-import spotifyReducer, { initialState } from "./spotifyReducer";
+import reducers from "./reducers";
 
 const store = createStore(
-  spotifyReducer,
-  initialState,
+  reducers,
   composeWithDevTools(applyMiddleware(thunk))
 );
 
