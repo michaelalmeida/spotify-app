@@ -20,7 +20,7 @@ export const H1 = styled.h1<TitlesPorps>`
 export const H3 = styled.h3<TitlesPorps>`
   ${TitlePattern}
   font-family: 'Heebo', sans-serif;
-  font-size: 26px;
+  font-size: 24px;
   text-align: ${(props) => (props.center ? "center" : "left")};
   font-weight: 300;
 `;
