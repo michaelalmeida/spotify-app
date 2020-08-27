@@ -1,21 +1,25 @@
 import React from "react";
 
 import styled, { css } from "styled-components";
-import { white, mainColor } from "../colors";
+import { white, primaryColor } from "../colors";
 
 const BtnPattern = css`
   padding: 10px;
-  color: ${white};
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  border: 0;
+  color: ${primaryColor};
   flex-grow: 0;
+  border: 2px solid ${primaryColor};
+  font-weight: 700;
+  text-transform: uppercase;
+  background: ${white};
+
+  &:hover {
+    color: ${white};
+    background: ${primaryColor};
+  }
 `;
 
 const Btn = styled.button`
   ${BtnPattern}
-  background: ${mainColor};
   outline: none;
   cursor: pointer;
 `;
@@ -23,7 +27,6 @@ const Btn = styled.button`
 const BtnLink = styled.a`
   ${BtnPattern}
   display: inline-block;
-  background: ${mainColor};
   outline: none;
   cursor: pointer;
   text-decoration: none;

@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 import GlobalStyles from "./components/style/globalStyle";
 import { Container } from "./components/style/container/Container";
 
-import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
 import HomePage from "./components/HomePage/HomePage";
 
@@ -27,9 +26,8 @@ const App: React.FC = () => {
   );
 
   return (
-    <Container>
+    <Container background>
       <GlobalStyles />
-      <Header isAuth={!!userToken} />
       <Router>
         <Switch>
           <Route exact path="/login/" component={Login} />

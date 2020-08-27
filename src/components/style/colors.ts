@@ -1,8 +1,11 @@
-export const mainColor = "#E0AE63";
+export const primaryColor = "#332CB3";
+export const secondaryColor = "#F38EC9";
+export const tertiaryColor = "#EF8802";
 
-export const background = "#eeeeee ";
+export const background = "#FDFDFE ";
 
-export const white = "#ffffff";
+export const white = "#FDFDFE";
+export const black = "#080B0E";
 
 export const randomColors = {
   1: "#543834 ",
