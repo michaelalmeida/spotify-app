@@ -18,7 +18,8 @@ export const Container = styled.div<ContainerProps>`
   border: 2px solid ${primaryColor};
 
   @media (max-width: 1024px) {
-    width: 100%;
+    margin: 5%;
+    width: 90%;
   }
 `;
 
