@@ -5,7 +5,6 @@ import { Redirect } from "react-router-dom";
 
 import getHash from "../../utils/getHash";
 
-import { SpotifyInitialState } from "../../store/spotifyReducer";
 import { authUser } from "../../store/actions";
 
 import { InnerContainer } from "../style/container/Container";
@@ -17,10 +16,16 @@ const Login: React.FC = () => {
     userToken: string;
   }
 
+  interface SpotifyInitialState {
+    spotify: {
+      userToken: string;
+    };
+  }
+
   const { userToken } = useSelector<SpotifyInitialState, StateProps>(
     (state: SpotifyInitialState) => {
       return {
-        userToken: state.userToken,
+        userToken: state.spotify.userToken,
       };
     }
   );
@@ -28,7 +33,7 @@ const Login: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(authUser(getHash()));
+    if (getHash()) dispatch(authUser(getHash()));
   }, [userToken, dispatch]);
 
   return (
