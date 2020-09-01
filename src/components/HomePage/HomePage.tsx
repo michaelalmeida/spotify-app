@@ -6,7 +6,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Header />
-      Home page element <Playlists />
+      <Playlists />
     </>
   );
 };

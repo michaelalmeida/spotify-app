@@ -24,7 +24,6 @@ export function setPlaylist(
 }
 
 export const getPlaylists = (userToken: string) => {
-  console.log(userToken);
   return (dispatch: (arg0: ApplicationActionTypes) => void): void => {
     axios
       .get("https://api.spotify.com/v1/browse/featured-playlists", {

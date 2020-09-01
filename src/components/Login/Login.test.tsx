@@ -2,7 +2,7 @@ import React from "react";
 import { cleanup } from "@testing-library/react";
 import { createStore } from "redux";
 
-import { renderWrapper } from "../../utils/testSetup";
+import { renderWrapper } from "../../utils/testUtils";
 
 import Login from "./Login";
 

@@ -38,9 +38,7 @@ const Login: React.FC = () => {
   return (
     <InnerContainer direction="row" data-testid="login-component">
       {userToken ? (
-        <Router>
-          <Redirect to="/" />
-        </Router>
+        <Redirect to="/" />
       ) : (
         <div data-testid="login-screen">
           <LoginScreen />
