@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
-import { Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
 
 import getHash from "../../utils/getHash";
 
@@ -37,8 +36,16 @@ const Login: React.FC = () => {
   }, [userToken, dispatch]);
 
   return (
-    <InnerContainer direction="row">
-      {userToken ? <Redirect to="/" /> : <LoginScreen />}
+    <InnerContainer direction="row" data-testid="login-component">
+      {userToken ? (
+        <Router>
+          <Redirect to="/" />
+        </Router>
+      ) : (
+        <div data-testid="login-screen">
+          <LoginScreen />
+        </div>
+      )}
     </InnerContainer>
   );
 };
