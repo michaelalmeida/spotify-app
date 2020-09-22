@@ -2,21 +2,21 @@
 import React from "react";
 
 import { render } from "@testing-library/react";
+import { createStore } from "redux";
 
 import { Provider } from "react-redux";
 import store from "../store/index";
-
-const Providers = ({ children }: { children: React.ReactElement }) => (
-  <Provider store={store}>{children}</Provider>
-);
+import reducers from "../store/reducers";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const customRender = (ui: React.ReactElement, options?: any) => {
-  const rendered = render(ui, { wrapper: Providers, ...options });
-  return {
-    ...rendered,
-    store,
-  };
-};
+export const renderWithStore = (
+  children: React.ReactElement,
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  initialState?: object
+) => {
+  const customStore = initialState
+    ? createStore(reducers, initialState)
+    : store;
 
-export { customRender as renderWrapper };
+  return render(<Provider store={customStore}>{children}</Provider>);
+};
