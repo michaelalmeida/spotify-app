@@ -14,9 +14,7 @@ export const renderWithStore = (
   // eslint-disable-next-line @typescript-eslint/ban-types
   initialState?: object
 ) => {
-  const customStore = initialState
-    ? createStore(reducers, initialState)
-    : store;
+  const customStore = initialState ? createStore(reducers) : store;
 
   return render(<Provider store={customStore}>{children}</Provider>);
 };

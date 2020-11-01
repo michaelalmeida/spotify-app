@@ -7,7 +7,11 @@ export interface PlaylistItems {
   external_urls: unknown;
   href: string;
   id: string;
-  images: unknown;
+  images: {
+    height: number;
+    url: string;
+    width: number;
+  }[];
   name: string;
   owner: unknown;
   primary_color: unknown;

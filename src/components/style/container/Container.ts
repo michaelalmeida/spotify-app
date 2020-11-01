@@ -34,6 +34,7 @@ export const InnerContainer = styled.div<ContainerProps>`
   width: ${(props) => props.width || "100%"};
   background: ${(props) => (props.background ? white : "none")};
   box-sizing: border-box;
+  flex-wrap: wrap;
 
   @media (max-width: 1024px) {
     margin: 0;
@@ -41,4 +42,10 @@ export const InnerContainer = styled.div<ContainerProps>`
     flex-direction: column;
     width: 100%;
   }
+`;
+
+export const SimpleContainer = styled.div<ContainerProps>`
+  display: flex;
+  align-items: ${(props) => (props.alignItems ? props.alignItems : "center")};
+  flex-direction: ${(props) => (props.direction ? props.direction : "column")};
 `;

@@ -1,6 +1,6 @@
 import React from "react";
 import { cleanup } from "@testing-library/react";
-import { getByTestId, queryByTestId } from "@testing-library/dom";
+import { screen, getByTestId, queryByTestId } from "@testing-library/dom";
 
 import { renderWithStore } from "../../utils/testUtils";
 
@@ -27,13 +27,15 @@ describe("<Login />", () => {
   });
 
   test("renders <LoginScreen /> when userToken has setted", () => {
-    const { container } = renderWithStore(<Login />, {
+    renderWithStore(<Login />, {
       spotify: {
         userToken: "",
         playlists: [],
       },
     });
 
-    expect(getByTestId(container, "login-screen")).not.toBeUndefined();
+    const btnLogin = screen.getByRole("link", { name: /logar/i });
+
+    expect(btnLogin).toBeTruthy();
   });
 });

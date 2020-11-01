@@ -5,6 +5,10 @@ import {
   PlaylistItems,
 } from "./types";
 
+export interface UserTokenState {
+  userToken: string;
+}
+
 export interface SpotifyInitialState {
   userToken: string;
   playlists: Array<PlaylistItems>;

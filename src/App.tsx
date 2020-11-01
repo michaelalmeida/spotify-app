@@ -8,21 +8,17 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import { UserTokenState } from "./store/spotifyReducer";
+
 import GlobalStyles from "./components/style/globalStyle";
 import { Container } from "./components/style/container/Container";
 
 import Login from "./components/Login/Login";
 import HomePage from "./components/HomePage/HomePage";
 
-interface SpotifyReducer {
-  spotify: {
-    userToken: string;
-  };
-}
-
 const App: React.FC = () => {
-  const userToken = useSelector<SpotifyReducer, string>(
-    (state: SpotifyReducer) => state.spotify.userToken
+  const userToken = useSelector<UserTokenState, string>(
+    (state: UserTokenState) => state.userToken
   );
 
   return (

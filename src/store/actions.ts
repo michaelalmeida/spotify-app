@@ -26,13 +26,13 @@ export function setPlaylist(
 export const getPlaylists = (userToken: string) => {
   return (dispatch: (arg0: ApplicationActionTypes) => void): void => {
     axios
-      .get("https://api.spotify.com/v1/browse/featured-playlists", {
+      .get("https://api.spotify.com/v1/me/playlists", {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
       })
       .then((res) => {
-        dispatch(setPlaylist(res.data.playlists.items));
+        dispatch(setPlaylist(res.data.items));
       })
       .catch((err) => err);
   };

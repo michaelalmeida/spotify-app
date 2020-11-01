@@ -1,42 +1,43 @@
 import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
+import { SpotifyInitialState } from "../../store/spotifyReducer";
 
 import { getPlaylists } from "../../store/actions";
-import { PlaylistItems } from "../../store/types";
 
 import { InnerContainer } from "../style/container/Container";
+
+import PlaylistCard from "./PlaylistCard/PlaylistCard";
 
 const Playlist: React.FC = () => {
   const dispatch = useDispatch();
 
-  interface StateProps {
-    userToken: string;
-    playlists: Array<PlaylistItems>;
-  }
-
-  interface SpotifyInitialState {
-    spotify: {
-      userToken: string;
-      playlists: Array<PlaylistItems>;
+  const { userToken, playlists } = useSelector<
+    SpotifyInitialState,
+    SpotifyInitialState
+  >((state: SpotifyInitialState) => {
+    return {
+      userToken: state.userToken,
+      playlists: state.playlists,
     };
-  }
-
-  const { userToken, playlists } = useSelector<SpotifyInitialState, StateProps>(
-    (state: SpotifyInitialState) => {
-      return {
-        userToken: state.spotify.userToken,
-        playlists: state.spotify.playlists,
-      };
-    }
-  );
+  });
 
   useEffect(() => {
     dispatch(getPlaylists(userToken));
   }, [dispatch, userToken]);
 
   return playlists ? (
-    <InnerContainer>{playlists.map((list) => list.name)}</InnerContainer>
+    <InnerContainer direction="row" justifyContent="flex-start">
+      {playlists.map((list) => (
+        <PlaylistCard
+          key={list.uri}
+          name={list.name}
+          image={list.images[1]?.url || ""}
+          description={list.description}
+          uri={list.uri}
+        />
+      ))}
+    </InnerContainer>
   ) : (
     <InnerContainer>Teste2</InnerContainer>
   );
